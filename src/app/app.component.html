@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp" ng-controller="MovieController">
+  <body>
+
+ 
+        <div class="container"> 
+          <form (ngSubmit)="onDetail()">
+          <h1 style="color:black">Movies</h1>
+          <div class="row">
+           
+            <input type="text" list="movies" name="path" autocomplete="off" ngModel
+            (ngModelChange)="onMovieInfo()" class="form-control" 
+              placeholder="Enter a movie name" #name/>   
+          
+                    <datalist id="movies">
+                        <option value={{movie.Title}} *ngFor="let movie of details" #search>{{movie.Title}}</option>
+                    </datalist>
+                    <section id="movieDetails">
+                    <input type="submit">
+                  </section>
+          </div>   
+    </form>
+    <br/>    
+          <div class="row" id="movieDetails" *ngIf='this.dropdown'>
+              <div class="row"  *ngFor="let list of Info">
+                <div class="row" >
+                  <label class="col-3">Movie Title&nbsp;</label>
+                  <section class="col-5">
+                    {{list.Title}}
+                  </section>
+                </div>
+                <div class="row" >
+                  <label class="col-3">Year&nbsp;</label>
+                  <section class="col-5">
+                    {{list.Year}}
+                  </section>
+                </div>
+                <div class="row" >
+                  <label class="col-3">&nbsp;</label>
+                    <img src="{{list.Poster}}" class="img-thumbnail" alt="Image">
+                </div>
+                <hr>
+              </div>
+
+        </div>
+      </div>
+  </body>
+</html>
